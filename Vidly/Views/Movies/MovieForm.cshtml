@@ -2,11 +2,11 @@
 @{
     /**/
 
-    ViewBag.Title = "New";
+    ViewBag.Title = Model.Title;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>New Movie</h2>
+<h2>@Model.Title</h2>
 
 @using (Html.BeginForm("Save", "Movies"))
 {
