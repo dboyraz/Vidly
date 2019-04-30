@@ -232,6 +232,10 @@
     <Compile Include="Migrations\201904211356374_PopulateGenres.Designer.cs">
       <DependentUpon>201904211356374_PopulateGenres.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904300740299_ChangeNumberInStockToByte.cs" />
+    <Compile Include="Migrations\201904300740299_ChangeNumberInStockToByte.Designer.cs">
+      <DependentUpon>201904300740299_ChangeNumberInStockToByte.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -405,6 +409,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904211356374_PopulateGenres.resx">
       <DependentUpon>201904211356374_PopulateGenres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904300740299_ChangeNumberInStockToByte.resx">
+      <DependentUpon>201904300740299_ChangeNumberInStockToByte.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
