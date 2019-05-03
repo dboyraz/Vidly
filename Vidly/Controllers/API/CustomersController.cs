@@ -5,6 +5,7 @@ using Vidly.Models;
 using System.Net;
 using Vidly.DTOs;
 using AutoMapper;
+using System;
 
 namespace Vidly.Controllers.API
 {
@@ -25,28 +26,28 @@ namespace Vidly.Controllers.API
         }
 
         // GET /api/customers/1
-        public CustomerDTO GetCustomer(int id)
+        public IHttpActionResult GetCustomer(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
 
             if (customer == null)
             {
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
             }
 
             else
             {
-                return Mapper.Map<Customer, CustomerDTO>(customer);
+                return Ok(Mapper.Map<Customer, CustomerDTO>(customer));
             }
         }
 
         // POST /api/customers
         [HttpPost]
-        public CustomerDTO CreateCustomer(CustomerDTO customerDto)
+        public IHttpActionResult CreateCustomer(CustomerDTO customerDto)
         {
             if (!ModelState.IsValid)
             {
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
             }
 
             else
@@ -57,7 +58,7 @@ namespace Vidly.Controllers.API
 
                 customerDto.Id = customer.Id;
 
-                return customerDto;
+                return Created(new Uri(Request.RequestUri + "/" + customer.Id), customerDto);
             }
         }
 
