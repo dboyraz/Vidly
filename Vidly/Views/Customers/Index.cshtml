@@ -37,7 +37,7 @@ else
                     <td>@Html.ActionLink(customer.Name, "Edit", "Customers", new { id = customer.Id }, null)</td>
                     <td>@customer.MembershipType.Name</td>
                     <td>
-                        <button type="button" data-customer-id="@customer.Id" class="btn btn-link js-delete" type="button">Delete</button>
+                        <button type="button" data-customer-id="@customer.Id" class="btn btn-link js-delete">Delete</button>
                     </td>
                 </tr>
             }
