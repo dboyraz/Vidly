@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using AutoMapper;
+using System;
 using System.Linq;
 using System.Web.Http;
-using Vidly.Models;
-using System.Net;
 using Vidly.DTOs;
-using AutoMapper;
-using System;
+using Vidly.Models;
+using System.Data.Entity;
 
 namespace Vidly.Controllers.API
 {
@@ -22,7 +21,9 @@ namespace Vidly.Controllers.API
         // GET /api/customers
         public IHttpActionResult GetCustomers()
         {
-            var customerDTO = _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDTO>);
+            var customerDTO = _context.Customers
+                .Include(c => c.MembershipType).ToList()
+                .Select(Mapper.Map<Customer, CustomerDTO>);
 
             return Ok(customerDTO);
         }
