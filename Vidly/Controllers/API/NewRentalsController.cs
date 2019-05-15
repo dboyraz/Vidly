@@ -19,10 +19,10 @@ namespace Vidly.Controllers.API
         public IHttpActionResult CreateNewRentals(NewRentalDTO newRental)
         {
             var customer = _context.Customers.Single(c => c.Id == newRental.CustomerId);
-
+            
             var movies = _context.Movies.Where(m => newRental.MovieIds.Contains(m.Id)).ToList();
-
-            foreach (var movie in movies)
+                                                
+            foreach (var movie in movies)   
             {
                 if (movie.NumberAvailable == 0)
                 {
